@@ -1,4 +1,7 @@
 ---
+	import SpeedInsights from '@vercel/speed-insights/astro';
+	const { title, description } = Astro.props;
+	
 	import "../styles/global.css";
 	
 	const pageTitle = "Home Page";
@@ -18,5 +21,13 @@
 		<a href="/blog/">Blog</a>
 
 		<h1>{pageTitle}</h1>
+
+		<script is:inline>
+			function speedInsightsBeforeSend(data){
+			  console.log("Speed Insights before send", data)
+			  return data;
+			}
+		  </script>
+		  <SpeedInsights />
 	</body>
 </html>
